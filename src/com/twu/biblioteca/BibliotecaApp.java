@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 
 public class BibliotecaApp {
-    protected List<String> listBooks = Arrays.asList("Not Your Perfect Mexican Daughter", "The Scarlet letter");
+    protected List<Book> listBooks = new ArrayList<Book>();
     public static void main(String[] args) {
     }
 
@@ -18,11 +18,19 @@ public class BibliotecaApp {
         printStream.println("Welcome:");
     }
 
-    protected void showListBooks(PrintStream printStream, List<String> listBooks){
+    protected void showListBooks(PrintStream printStream, List<Book> listBooks){
         printStream.println("Here is a list of books:");
-        for (String book: listBooks)
-                printStream.println(book);
+        for (Book book: listBooks)
+                printStream.println(book.title);
     }
+
+    protected void addBook(String title, String author, int year){
+        Book book = new Book(title, author, year);
+        listBooks.add(book);
+    }
+
+    protected void 
+
 
 
 }
