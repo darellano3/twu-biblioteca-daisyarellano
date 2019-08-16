@@ -4,7 +4,7 @@ package com.twu.biblioteca;
 
 
 import com.twu.biblioteca.BibliotecaApp;
-import org.junit.Test;
+import org.junit.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -17,28 +17,37 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class BibliotecaAppTest {
+     private BibliotecaApp testBib;
+     private PrintStream printStream;
+     private ByteArrayOutputStream outputStream;
+     private List<String> listBooks;
 
-
+    @Before
+    public void setup(){
+        testBib = new BibliotecaApp();
+        outputStream = new ByteArrayOutputStream();
+        printStream = new PrintStream(outputStream);
+        listBooks = Arrays.asList("Not Your Perfect Mexican Daughter", "The Scarlet letter");
+    }
 
     @Test
-    public void test() {
-        BibliotecaApp testBib = new BibliotecaApp();
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(outputStream);
-        testBib.run(printStream);
-        assertThat(outputStream.toString(), is("Welcome: hi whats up"));
-
+    public void welcomeTest() {
+        testBib.welcomeMessage(printStream);
+        assertThat(outputStream.toString(), is("Welcome:\n"));
     }
 
     @Test
     public void showBooksTest() {
-        BibliotecaApp testBib = new BibliotecaApp();
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(outputStream);
-        List<String> listBooks = Arrays.asList("Not Your Perfect Mexican Daughter", "The Scarlet letter");
-        testBib.showMenu(printStream, listBooks);
-        assertThat(outputStream.toString(), is("Here is a list of books: Not Your Perfect Mexican Daughter\nThe Scarlet letter\n"));
+        testBib.showListBooks(printStream, listBooks);
+        assertThat(outputStream.toString(), is("Here is a list of books:\nNot Your Perfect Mexican Daughter\nThe Scarlet letter\n"));
     }
 
+    @Test
+    public void runTest() {
+        testBib.run(printStream);
+        assertThat(outputStream.toString(), is("Welcome:\nHere is a list of books:\nNot Your Perfect Mexican Daughter\nThe Scarlet letter\n"));
+    }
+
+    
 
 }
