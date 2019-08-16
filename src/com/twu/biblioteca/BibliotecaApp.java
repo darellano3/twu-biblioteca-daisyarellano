@@ -21,15 +21,13 @@ public class BibliotecaApp {
     protected void showListBooks(PrintStream printStream, List<Book> listBooks){
         printStream.println("Here is a list of books:");
         for (Book book: listBooks)
-                printStream.println(book.title);
+                printStream.println(book.toString());
     }
 
     protected void addBook(String title, String author, int year){
         Book book = new Book(title, author, year);
         listBooks.add(book);
     }
-
-    protected void 
 
 
 

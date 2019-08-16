@@ -45,18 +45,13 @@ public class BibliotecaAppTest {
     @Test
     public void showBooksTest() {
         testBib.showListBooks(printStream, listBooks);
-        assertThat(outputStream.toString(), is("Here is a list of books:\nNot Your Perfect Mexican Daughter\nTFIOS\n"));
+        assertThat(outputStream.toString(), is("Here is a list of books:\nNot Your Perfect Mexican Daughter, Erika Sanchez, 2016\nTFIOS, Jhon Greene, 2015\n"));
     }
 
     @Test
     public void runTest() {
         testBib.run(printStream);
-        assertThat(outputStream.toString(), is("Welcome:\nHere is a list of books:\nNot Your Perfect Mexican Daughter\nTFIOS\n"));
-    }
-
-    @Test
-    public void printAuthorandYear() {
-
+        assertThat(outputStream.toString(), is("Welcome:\nHere is a list of books:\nNot Your Perfect Mexican Daughter, Erika Sanchez, 2016\nTFIOS, Jhon Greene, 2015\n"));
     }
 
 
